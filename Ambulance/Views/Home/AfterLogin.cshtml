@@ -1,0 +1,11 @@
+﻿@{
+    ViewBag.Title = "AfterLogin";
+}
+
+<h2>AfterLogin</h2>
+@if(Session["LogedUserId"] != null){
+    <text>
+        Welcome @Session["LogedUserLogin"].ToString()
+        Pass @Session["LogedUserPass"]
+    </text>
+}

@@ -1,0 +1,85 @@
+﻿@model Ambulance.ill_history
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ill_history</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.ill_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.ill_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PName)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PAdress)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PAdress)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NPasport)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NPasport)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date_in)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date_in)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date_out)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date_out)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Diagn_in)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Diagn_in)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Diagn_out)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Diagn_out)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.doctors.d_name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.doctors.d_name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.palata.Pal_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.palata.Pal_id)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

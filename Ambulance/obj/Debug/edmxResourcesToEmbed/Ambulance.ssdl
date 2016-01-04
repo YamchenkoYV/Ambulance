@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ambulance.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="ambulanceStoreContainer">
+    <EntitySet Name="ambulance_user" EntityType="ambulance.Store.ambulance_user" store:Type="Tables" Schema="ambulance" />
+    <EntitySet Name="doctors" EntityType="ambulance.Store.doctors" store:Type="Tables" Schema="ambulance" />
+    <EntitySet Name="historystr" EntityType="ambulance.Store.historystr" store:Type="Tables" Schema="ambulance" />
+    <EntitySet Name="ill_history" EntityType="ambulance.Store.ill_history" store:Type="Tables" Schema="ambulance" />
+    <EntitySet Name="m_sister" EntityType="ambulance.Store.m_sister" store:Type="Tables" Schema="ambulance" />
+    <EntitySet Name="palata" EntityType="ambulance.Store.palata" store:Type="Tables" Schema="ambulance" />
+    <EntitySet Name="role" EntityType="ambulance.Store.role" store:Type="Tables" Schema="ambulance" />
+    <EntitySet Name="pcount" EntityType="ambulance.Store.pcount" store:Type="Views" store:Schema="ambulance" store:Name="pcount">
+      <DefiningQuery>SELECT
+      `pcount`.`d_name`, 
+      `pcount`.`count`
+      FROM `pcount` AS `pcount`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="retir" EntityType="ambulance.Store.retir" store:Type="Views" store:Schema="ambulance" store:Name="retir">
+      <DefiningQuery>SELECT
+      `retir`.`OtdNumb`
+      FROM `retir` AS `retir`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="retir1" EntityType="ambulance.Store.retir1" store:Type="Views" store:Schema="ambulance" store:Name="retir1">
+      <DefiningQuery>SELECT
+      `retir1`.`OtdNumb`, 
+      `retir1`.`count(*)`
+      FROM `retir1` AS `retir1`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="retir2" EntityType="ambulance.Store.retir2" store:Type="Views" store:Schema="ambulance" store:Name="retir2">
+      <DefiningQuery>SELECT
+      `retir2`.`OtdNumb`, 
+      `retir2`.`Numb`
+      FROM `retir2` AS `retir2`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="retire" EntityType="ambulance.Store.retire" store:Type="Views" store:Schema="ambulance" store:Name="retire">
+      <DefiningQuery>SELECT
+      `retire`.`OtdNumb`, 
+      `retire`.`Numb`
+      FROM `retire` AS `retire`</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="dshifr" Association="ambulance.Store.dshifr">
+      <End Role="doctors" EntitySet="doctors" />
+      <End Role="historystr" EntitySet="historystr" />
+    </AssociationSet>
+    <AssociationSet Name="ill_id" Association="ambulance.Store.ill_id">
+      <End Role="ill_history" EntitySet="ill_history" />
+      <End Role="historystr" EntitySet="historystr" />
+    </AssociationSet>
+    <AssociationSet Name="Pal_id" Association="ambulance.Store.Pal_id">
+      <End Role="palata" EntitySet="palata" />
+      <End Role="ill_history" EntitySet="ill_history" />
+    </AssociationSet>
+    <AssociationSet Name="role_id" Association="ambulance.Store.role_id">
+      <End Role="role" EntitySet="role" />
+      <End Role="ambulance_user" EntitySet="ambulance_user" />
+    </AssociationSet>
+    <AssociationSet Name="shifr" Association="ambulance.Store.shifr">
+      <End Role="doctors" EntitySet="doctors" />
+      <End Role="ill_history" EntitySet="ill_history" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ambulance_user">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="password" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="role_id" Type="uint" Nullable="false" />
+    <Property Name="prof_id" Type="uint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="doctors">
+    <Key>
+      <PropertyRef Name="shifr" />
+    </Key>
+    <Property Name="shifr" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="d_name" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="OtdNumb" Type="uint" Nullable="false" />
+    <Property Name="Date_in" Type="date" Nullable="false" />
+    <Property Name="Date_out" Type="date" Nullable="false" />
+    <Property Name="Spec" Type="varchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <EntityType Name="historystr">
+    <Key>
+      <PropertyRef Name="Str_id" />
+    </Key>
+    <Property Name="Str_id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Date" Type="date" Nullable="false" />
+    <Property Name="ill_id" Type="uint" Nullable="false" />
+    <Property Name="dshifr" Type="uint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ill_history">
+    <Key>
+      <PropertyRef Name="ill_id" />
+    </Key>
+    <Property Name="ill_id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="PName" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="PAdress" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="NPasport" Type="uint" Nullable="false" />
+    <Property Name="Date_in" Type="date" Nullable="false" />
+    <Property Name="Date_out" Type="date" Nullable="false" />
+    <Property Name="Diagn_in" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="Diagn_out" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="shifr" Type="uint" Nullable="false" />
+    <Property Name="Pal_id" Type="uint" />
+  </EntityType>
+  <EntityType Name="m_sister">
+    <Key>
+      <PropertyRef Name="M_id" />
+    </Key>
+    <Property Name="M_id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="M_Name" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="OtdNumb" Type="uint" />
+    <Property Name="Date_in" Type="date" Nullable="false" />
+    <Property Name="Date_out" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="palata">
+    <Key>
+      <PropertyRef Name="Pal_id" />
+    </Key>
+    <Property Name="Pal_id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Places" Type="uint" Nullable="false" />
+    <Property Name="Free_places" Type="uint" Nullable="false" />
+    <Property Name="OtdNumb" Type="uint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="role_id" />
+    </Key>
+    <Property Name="role_id" Type="uint" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="role_name" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="role_password" Type="varchar" Nullable="false" MaxLength="45" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.ambulance.pcount' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="pcount">
+    <Key>
+      <PropertyRef Name="d_name" />
+      <PropertyRef Name="count" />
+    </Key>
+    <Property Name="d_name" Type="varchar" Nullable="false" MaxLength="45" />
+    <Property Name="count" Type="bigint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.ambulance.retir' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="retir">
+    <Key>
+      <PropertyRef Name="OtdNumb" />
+    </Key>
+    <Property Name="OtdNumb" Type="uint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.ambulance.retir1' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="retir1">
+    <Key>
+      <PropertyRef Name="OtdNumb" />
+      <PropertyRef Name="count(*)" />
+    </Key>
+    <Property Name="OtdNumb" Type="uint" Nullable="false" />
+    <Property Name="count(*)" Type="bigint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.ambulance.retir2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="retir2">
+    <Key>
+      <PropertyRef Name="OtdNumb" />
+      <PropertyRef Name="Numb" />
+    </Key>
+    <Property Name="OtdNumb" Type="uint" Nullable="false" />
+    <Property Name="Numb" Type="bigint" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.ambulance.retire' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+  <EntityType Name="retire">
+    <Key>
+      <PropertyRef Name="OtdNumb" />
+      <PropertyRef Name="Numb" />
+    </Key>
+    <Property Name="OtdNumb" Type="uint" Nullable="false" />
+    <Property Name="Numb" Type="bigint" Nullable="false" />
+  </EntityType>
+  <Association Name="dshifr">
+    <End Role="doctors" Type="ambulance.Store.doctors" Multiplicity="1" />
+    <End Role="historystr" Type="ambulance.Store.historystr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="doctors">
+        <PropertyRef Name="shifr" />
+      </Principal>
+      <Dependent Role="historystr">
+        <PropertyRef Name="dshifr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ill_id">
+    <End Role="ill_history" Type="ambulance.Store.ill_history" Multiplicity="1" />
+    <End Role="historystr" Type="ambulance.Store.historystr" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ill_history">
+        <PropertyRef Name="ill_id" />
+      </Principal>
+      <Dependent Role="historystr">
+        <PropertyRef Name="ill_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Pal_id">
+    <End Role="palata" Type="ambulance.Store.palata" Multiplicity="0..1" />
+    <End Role="ill_history" Type="ambulance.Store.ill_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="palata">
+        <PropertyRef Name="Pal_id" />
+      </Principal>
+      <Dependent Role="ill_history">
+        <PropertyRef Name="Pal_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="role_id">
+    <End Role="role" Type="ambulance.Store.role" Multiplicity="1" />
+    <End Role="ambulance_user" Type="ambulance.Store.ambulance_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="role">
+        <PropertyRef Name="role_id" />
+      </Principal>
+      <Dependent Role="ambulance_user">
+        <PropertyRef Name="role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="shifr">
+    <End Role="doctors" Type="ambulance.Store.doctors" Multiplicity="1" />
+    <End Role="ill_history" Type="ambulance.Store.ill_history" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="doctors">
+        <PropertyRef Name="shifr" />
+      </Principal>
+      <Dependent Role="ill_history">
+        <PropertyRef Name="shifr" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

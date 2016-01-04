@@ -1,0 +1,50 @@
+﻿@model Ambulance.m_sister
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>m_sister</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.M_id)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.M_id)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.M_Name)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.M_Name)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.OtdNumb)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.OtdNumb)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date_in)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date_in)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Date_out)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Date_out)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

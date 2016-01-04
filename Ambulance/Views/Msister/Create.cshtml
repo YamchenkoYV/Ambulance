@@ -1,0 +1,67 @@
+﻿@model Ambulance.m_sister
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>m_sister</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.M_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.M_id)
+            @Html.ValidationMessageFor(model => model.M_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.M_Name)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.M_Name)
+            @Html.ValidationMessageFor(model => model.M_Name)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.OtdNumb)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.OtdNumb)
+            @Html.ValidationMessageFor(model => model.OtdNumb)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date_in)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date_in)
+            @Html.ValidationMessageFor(model => model.Date_in)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date_out)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date_out)
+            @Html.ValidationMessageFor(model => model.Date_out)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

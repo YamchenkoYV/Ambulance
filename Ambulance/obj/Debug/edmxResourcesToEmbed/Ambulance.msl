@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ambulanceStoreContainer" CdmEntityContainer="ambulanceEntities">
+    <EntitySetMapping Name="ambulance_user">
+      <EntityTypeMapping TypeName="ambulance.ambulance_user">
+        <MappingFragment StoreEntitySet="ambulance_user">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="prof_id" ColumnName="prof_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="doctors">
+      <EntityTypeMapping TypeName="ambulance.doctors">
+        <MappingFragment StoreEntitySet="doctors">
+          <ScalarProperty Name="shifr" ColumnName="shifr" />
+          <ScalarProperty Name="d_name" ColumnName="d_name" />
+          <ScalarProperty Name="OtdNumb" ColumnName="OtdNumb" />
+          <ScalarProperty Name="Date_in" ColumnName="Date_in" />
+          <ScalarProperty Name="Date_out" ColumnName="Date_out" />
+          <ScalarProperty Name="Spec" ColumnName="Spec" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="historystr">
+      <EntityTypeMapping TypeName="ambulance.historystr">
+        <MappingFragment StoreEntitySet="historystr">
+          <ScalarProperty Name="Str_id" ColumnName="Str_id" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="ill_id" ColumnName="ill_id" />
+          <ScalarProperty Name="dshifr" ColumnName="dshifr" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ill_history">
+      <EntityTypeMapping TypeName="ambulance.ill_history">
+        <MappingFragment StoreEntitySet="ill_history">
+          <ScalarProperty Name="ill_id" ColumnName="ill_id" />
+          <ScalarProperty Name="PName" ColumnName="PName" />
+          <ScalarProperty Name="PAdress" ColumnName="PAdress" />
+          <ScalarProperty Name="NPasport" ColumnName="NPasport" />
+          <ScalarProperty Name="Date_in" ColumnName="Date_in" />
+          <ScalarProperty Name="Date_out" ColumnName="Date_out" />
+          <ScalarProperty Name="Diagn_in" ColumnName="Diagn_in" />
+          <ScalarProperty Name="Diagn_out" ColumnName="Diagn_out" />
+          <ScalarProperty Name="shifr" ColumnName="shifr" />
+          <ScalarProperty Name="Pal_id" ColumnName="Pal_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="m_sister">
+      <EntityTypeMapping TypeName="ambulance.m_sister">
+        <MappingFragment StoreEntitySet="m_sister">
+          <ScalarProperty Name="M_id" ColumnName="M_id" />
+          <ScalarProperty Name="M_Name" ColumnName="M_Name" />
+          <ScalarProperty Name="OtdNumb" ColumnName="OtdNumb" />
+          <ScalarProperty Name="Date_in" ColumnName="Date_in" />
+          <ScalarProperty Name="Date_out" ColumnName="Date_out" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="palata">
+      <EntityTypeMapping TypeName="ambulance.palata">
+        <MappingFragment StoreEntitySet="palata">
+          <ScalarProperty Name="Pal_id" ColumnName="Pal_id" />
+          <ScalarProperty Name="Places" ColumnName="Places" />
+          <ScalarProperty Name="Free_places" ColumnName="Free_places" />
+          <ScalarProperty Name="OtdNumb" ColumnName="OtdNumb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="role">
+      <EntityTypeMapping TypeName="ambulance.role">
+        <MappingFragment StoreEntitySet="role">
+          <ScalarProperty Name="role_id" ColumnName="role_id" />
+          <ScalarProperty Name="role_name" ColumnName="role_name" />
+          <ScalarProperty Name="role_password" ColumnName="role_password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pcount">
+      <EntityTypeMapping TypeName="ambulance.pcount">
+        <MappingFragment StoreEntitySet="pcount">
+          <ScalarProperty Name="d_name" ColumnName="d_name" />
+          <ScalarProperty Name="count" ColumnName="count" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="retir">
+      <EntityTypeMapping TypeName="ambulance.retir">
+        <MappingFragment StoreEntitySet="retir">
+          <ScalarProperty Name="OtdNumb" ColumnName="OtdNumb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="retir1">
+      <EntityTypeMapping TypeName="ambulance.retir1">
+        <MappingFragment StoreEntitySet="retir1">
+          <ScalarProperty Name="OtdNumb" ColumnName="OtdNumb" />
+          <ScalarProperty Name="count___" ColumnName="count(*)" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="retir2">
+      <EntityTypeMapping TypeName="ambulance.retir2">
+        <MappingFragment StoreEntitySet="retir2">
+          <ScalarProperty Name="OtdNumb" ColumnName="OtdNumb" />
+          <ScalarProperty Name="Numb" ColumnName="Numb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="retire">
+      <EntityTypeMapping TypeName="ambulance.retire">
+        <MappingFragment StoreEntitySet="retire">
+          <ScalarProperty Name="OtdNumb" ColumnName="OtdNumb" />
+          <ScalarProperty Name="Numb" ColumnName="Numb" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

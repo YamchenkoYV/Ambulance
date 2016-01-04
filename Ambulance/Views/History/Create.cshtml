@@ -1,0 +1,107 @@
+﻿@model Ambulance.ill_history
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ill_history</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ill_id)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ill_id)
+            @Html.ValidationMessageFor(model => model.ill_id)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PName)
+            @Html.ValidationMessageFor(model => model.PName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PAdress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PAdress)
+            @Html.ValidationMessageFor(model => model.PAdress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NPasport)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NPasport)
+            @Html.ValidationMessageFor(model => model.NPasport)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date_in)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date_in)
+            @Html.ValidationMessageFor(model => model.Date_in)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Date_out)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Date_out)
+            @Html.ValidationMessageFor(model => model.Date_out)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Diagn_in)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Diagn_in)
+            @Html.ValidationMessageFor(model => model.Diagn_in)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Diagn_out)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Diagn_out)
+            @Html.ValidationMessageFor(model => model.Diagn_out)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.shifr, "doctors")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("shifr", String.Empty)
+            @Html.ValidationMessageFor(model => model.shifr)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Pal_id, "palata")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("Pal_id", String.Empty)
+            @Html.ValidationMessageFor(model => model.Pal_id)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Ambulance.ill_history>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ill_id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PAdress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NPasport)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_in)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_out)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diagn_in)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diagn_out)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.doctors.d_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.palata.Pal_id)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ill_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PAdress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NPasport)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_in)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_out)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diagn_in)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diagn_out)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.doctors.d_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.palata.Pal_id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.ill_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ill_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ill_id })
+        </td>
+    </tr>
+}
+
+</table>
