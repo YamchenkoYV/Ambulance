@@ -29,28 +29,46 @@ namespace Ambulance.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (ambulanceEntities dc = new ambulanceEntities())
-                {
-                    string cypher;
-                    using (MD5 md5Hash = MD5.Create())
-                        {
-                             cypher = GetMd5Hash(md5Hash,user.password.ToString());
- 
-                        }
-                    ambulance_user v = dc.ambulance_user.Where(a => a.login.Equals(user.login) && a.password.Equals(cypher)).FirstOrDefault();
-                    
-                    
-                    if (v != null)
+                    using (ambulanceEntities dc = new ambulanceEntities())
                     {
-                       
-                        Session["LogedUserId"] = v.id.ToString();
-                        Session["LogedUserLogin"] = v.login.ToString();
-                        Session["LogedUserRole"] = v.role_id.ToString();
-                        Session["LogedUserPass"] = cypher;
-                        return RedirectToAction("AfterLogin");
+                        
+                        string cypher;
+                        using (MD5 md5Hash = MD5.Create())
+                        {
+                            cypher = GetMd5Hash(md5Hash, user.password.ToString());
+
+                        }
+
+                        ambulance_user v = dc.ambulance_user.Where(b => b.login.Equals(user.login) && b.password.Equals(cypher)).FirstOrDefault();
+
+
+                        if (v != null)
+                        {
+
+                            string staffName = "";
+                            int depNumb;
+                            if (v.role_id == 1)
+                            {
+                                var staff = dc.doctors.Where(a => a.shifr.Equals(v.prof_id)).FirstOrDefault();
+                                staffName = staff.d_name;
+                                depNumb = (int)staff.OtdNumb;
+                            }
+                            else if (v.role_id == 2)
+                            {
+                                var staff = dc.m_sister.Where(a => a.M_id.Equals(v.prof_id)).FirstOrDefault();
+                                staffName = staff.M_Name;
+                                depNumb = (int)staff.OtdNumb;
+                            }
+                            Session["LogedUserId"] = v.id.ToString();
+                            Session["LogedUserLogin"] = v.login.ToString();
+                            Session["LogedUserRole"] = v.role_id.ToString();
+                            Session["LogedUserPass"] = cypher;
+                            Session["LogedUserName"] = staffName;
+                           
+                            return RedirectToAction("AfterLogin");
+                        }
                     }
-                }
-            }
+                }      
             return View(user);
         }
         public ActionResult AfterLogin()

@@ -18,6 +18,7 @@ namespace Ambulance
         {
             this.historystr = new HashSet<historystr>();
             this.ill_history = new HashSet<ill_history>();
+            this.ambulance_user = new HashSet<ambulance_user>();
         }
     
         public long shifr { get; set; }
@@ -29,5 +30,6 @@ namespace Ambulance
     
         public virtual ICollection<historystr> historystr { get; set; }
         public virtual ICollection<ill_history> ill_history { get; set; }
+        public virtual ICollection<ambulance_user> ambulance_user { get; set; }
     }
 }

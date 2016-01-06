@@ -11,12 +11,12 @@
 @Html.ValidationSummary(true)
 if (ViewBag.Message !=  null)
 {
-    <div style="border:1px solid red">
+    <div style="border: 1px solid red">
         @ViewBag.Message
     </div>
 }
 
-<table>
+<table align="center">
     <tr>
         <td>@Html.LabelFor(a=>a.login)</td>
         <td>@Html.TextBoxFor(a=>a.login)</td>

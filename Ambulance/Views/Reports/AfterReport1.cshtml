@@ -1,0 +1,28 @@
+﻿@model System.Linq.IQueryable<IGrouping<Int32,Ambulance.ill_history>>
+
+<div id="searchresults">
+    <h3>Пациенты поступившие в стационар в @Model.First().First().Date_in.Year году</h3>
+    <table style="border:1px; width:50px">
+    @foreach (var item in Model)
+    { 
+        <tr>
+            <td>
+             @switch (item.Key.ToString())
+             {
+                 case "1": @:Январь 
+                 case "3": @:Март 
+                 case "9": @:Сентябрь 
+             default: break;
+             } 
+            </td>
+              <td><table>
+                @foreach(var ill in @item){
+                      <tr><td>@ill.PName</td></tr>
+                      }
+
+                  </table></td>
+        </tr>
+    }
+    </table>
+        
+</div>

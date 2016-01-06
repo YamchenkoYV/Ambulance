@@ -8,11 +8,6 @@
     <EntitySet Name="m_sister" EntityType="ambulance.m_sister" />
     <EntitySet Name="palata" EntityType="ambulance.palata" />
     <EntitySet Name="role" EntityType="ambulance.role" />
-    <EntitySet Name="pcount" EntityType="ambulance.pcount" />
-    <EntitySet Name="retir" EntityType="ambulance.retir" />
-    <EntitySet Name="retir1" EntityType="ambulance.retir1" />
-    <EntitySet Name="retir2" EntityType="ambulance.retir2" />
-    <EntitySet Name="retire" EntityType="ambulance.retire" />
     <AssociationSet Name="role_id" Association="ambulance.role_id">
       <End Role="role" EntitySet="role" />
       <End Role="ambulance_user" EntitySet="ambulance_user" />
@@ -33,6 +28,14 @@
       <End Role="palata" EntitySet="palata" />
       <End Role="ill_history" EntitySet="ill_history" />
     </AssociationSet>
+    <AssociationSet Name="doctorsambulance_user" Association="ambulance.doctorsambulance_user">
+      <End Role="doctors" EntitySet="doctors" />
+      <End Role="ambulance_user" EntitySet="ambulance_user" />
+    </AssociationSet>
+    <AssociationSet Name="m_sisterambulance_user" Association="ambulance.m_sisterambulance_user">
+      <End Role="m_sister" EntitySet="m_sister" />
+      <End Role="ambulance_user" EntitySet="ambulance_user" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ambulance_user">
     <Key>
@@ -44,6 +47,8 @@
     <Property Name="role_id" Type="Int64" Nullable="false" />
     <Property Name="prof_id" Type="Int64" Nullable="false" />
     <NavigationProperty Name="role" Relationship="ambulance.role_id" FromRole="ambulance_user" ToRole="role" />
+    <NavigationProperty Name="doctors" Relationship="ambulance.doctorsambulance_user" FromRole="ambulance_user" ToRole="doctors" />
+    <NavigationProperty Name="m_sister" Relationship="ambulance.m_sisterambulance_user" FromRole="ambulance_user" ToRole="m_sister" />
   </EntityType>
   <EntityType Name="doctors">
     <Key>
@@ -57,6 +62,7 @@
     <Property Name="Spec" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="historystr" Relationship="ambulance.dshifr" FromRole="doctors" ToRole="historystr" />
     <NavigationProperty Name="ill_history" Relationship="ambulance.shifr" FromRole="doctors" ToRole="ill_history" />
+    <NavigationProperty Name="ambulance_user" Relationship="ambulance.doctorsambulance_user" FromRole="doctors" ToRole="ambulance_user" />
   </EntityType>
   <EntityType Name="historystr">
     <Key>
@@ -96,6 +102,7 @@
     <Property Name="OtdNumb" Type="Int64" />
     <Property Name="Date_in" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="Date_out" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="ambulance_user" Relationship="ambulance.m_sisterambulance_user" FromRole="m_sister" ToRole="ambulance_user" />
   </EntityType>
   <EntityType Name="palata">
     <Key>
@@ -115,44 +122,6 @@
     <Property Name="role_name" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
     <Property Name="role_password" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
     <NavigationProperty Name="ambulance_user" Relationship="ambulance.role_id" FromRole="role" ToRole="ambulance_user" />
-  </EntityType>
-  <EntityType Name="pcount">
-    <Key>
-      <PropertyRef Name="d_name" />
-      <PropertyRef Name="count" />
-    </Key>
-    <Property Name="d_name" Type="String" Nullable="false" MaxLength="45" Unicode="false" FixedLength="false" />
-    <Property Name="count" Type="Int64" Nullable="false" />
-  </EntityType>
-  <EntityType Name="retir">
-    <Key>
-      <PropertyRef Name="OtdNumb" />
-    </Key>
-    <Property Name="OtdNumb" Type="Int64" Nullable="false" />
-  </EntityType>
-  <EntityType Name="retir1">
-    <Key>
-      <PropertyRef Name="OtdNumb" />
-      <PropertyRef Name="count___" />
-    </Key>
-    <Property Name="OtdNumb" Type="Int64" Nullable="false" />
-    <Property Name="count___" Type="Int64" Nullable="false" />
-  </EntityType>
-  <EntityType Name="retir2">
-    <Key>
-      <PropertyRef Name="OtdNumb" />
-      <PropertyRef Name="Numb" />
-    </Key>
-    <Property Name="OtdNumb" Type="Int64" Nullable="false" />
-    <Property Name="Numb" Type="Int64" Nullable="false" />
-  </EntityType>
-  <EntityType Name="retire">
-    <Key>
-      <PropertyRef Name="OtdNumb" />
-      <PropertyRef Name="Numb" />
-    </Key>
-    <Property Name="OtdNumb" Type="Int64" Nullable="false" />
-    <Property Name="Numb" Type="Int64" Nullable="false" />
   </EntityType>
   <Association Name="role_id">
     <End Role="role" Type="ambulance.role" Multiplicity="1" />
@@ -211,6 +180,30 @@
       </Principal>
       <Dependent Role="ill_history">
         <PropertyRef Name="Pal_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="doctorsambulance_user">
+    <End Type="ambulance.doctors" Role="doctors" Multiplicity="1" />
+    <End Type="ambulance.ambulance_user" Role="ambulance_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="doctors">
+        <PropertyRef Name="shifr" />
+      </Principal>
+      <Dependent Role="ambulance_user">
+        <PropertyRef Name="prof_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="m_sisterambulance_user">
+    <End Type="ambulance.m_sister" Role="m_sister" Multiplicity="1" />
+    <End Type="ambulance.ambulance_user" Role="ambulance_user" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="m_sister">
+        <PropertyRef Name="M_id" />
+      </Principal>
+      <Dependent Role="ambulance_user">
+        <PropertyRef Name="prof_id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

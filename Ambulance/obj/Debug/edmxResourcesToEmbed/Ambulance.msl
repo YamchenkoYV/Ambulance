@@ -80,44 +80,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="pcount">
-      <EntityTypeMapping TypeName="ambulance.pcount">
-        <MappingFragment StoreEntitySet="pcount">
-          <ScalarProperty Name="d_name" ColumnName="d_name" />
-          <ScalarProperty Name="count" ColumnName="count" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="retir">
-      <EntityTypeMapping TypeName="ambulance.retir">
-        <MappingFragment StoreEntitySet="retir">
-          <ScalarProperty Name="OtdNumb" ColumnName="OtdNumb" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="retir1">
-      <EntityTypeMapping TypeName="ambulance.retir1">
-        <MappingFragment StoreEntitySet="retir1">
-          <ScalarProperty Name="OtdNumb" ColumnName="OtdNumb" />
-          <ScalarProperty Name="count___" ColumnName="count(*)" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="retir2">
-      <EntityTypeMapping TypeName="ambulance.retir2">
-        <MappingFragment StoreEntitySet="retir2">
-          <ScalarProperty Name="OtdNumb" ColumnName="OtdNumb" />
-          <ScalarProperty Name="Numb" ColumnName="Numb" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="retire">
-      <EntityTypeMapping TypeName="ambulance.retire">
-        <MappingFragment StoreEntitySet="retire">
-          <ScalarProperty Name="OtdNumb" ColumnName="OtdNumb" />
-          <ScalarProperty Name="Numb" ColumnName="Numb" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

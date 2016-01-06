@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Ambulance.ill_history>
+@{
+    ViewBag.Title = "Report1";
+}
+@Scripts.Render("~/bundles/modernizr")
+<h2>Отчет о заболеваемости пациентов за период</h2>
+@using(Ajax.BeginForm("AfterReport1",new AjaxOptions{UpdateTargetId="result"})){
+
+    @Html.Label("Введите год: ") 
+    @Html.TextBox("date","",Html.Value("Получить отчет"))
+
+    <input type="submit" />
+}
+<div id="result"></div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

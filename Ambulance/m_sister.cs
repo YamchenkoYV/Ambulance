@@ -14,10 +14,17 @@ namespace Ambulance
     
     public partial class m_sister
     {
+        public m_sister()
+        {
+            this.ambulance_user = new HashSet<ambulance_user>();
+        }
+    
         public long M_id { get; set; }
         public string M_Name { get; set; }
         public Nullable<long> OtdNumb { get; set; }
         public System.DateTime Date_in { get; set; }
         public System.DateTime Date_out { get; set; }
+    
+        public virtual ICollection<ambulance_user> ambulance_user { get; set; }
     }
 }

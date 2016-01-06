@@ -1,8 +1,3 @@
-
-
-
-
-
 body {
 	font-family: arial, helvetica, sans-serif;
 	font-size: 80%;
@@ -47,6 +42,7 @@ h1 {
 h2 {
 	color: white;
 	background-color: #090;
+    text-align:center;
 	font-size: 1.5em;
 	margin: 2em;
 	padding: 0.1em;
@@ -75,22 +71,27 @@ strong {
 
 li {
     list-style-type:circle;
-	marker-offset:6 px;
 	color: #900;
 	font-style: italic;
+    font-size:20px;
+    margin-bottom:20px;
+    margin-left:30%;
 }
 
 table {
+    text-align:center;
     margin-top:2%;
     vertical-align: middle;
 	background-color: #ffc;
 }
 td{
- 
  text-align:center;
  vertical-align:middle;
 }
 small {
- text-decoration: underline; border-color:#090 ;background-color:#ffa; color:#00F; border-style:groove;
+ text-decoration: underline; 
+ border-color:#090 ;
+ background-color:#ffa; 
+ color:#00F; border-style:groove;
  border-width:1px; padding:5px;
 }

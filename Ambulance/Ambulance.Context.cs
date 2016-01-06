@@ -32,10 +32,5 @@ namespace Ambulance
         public DbSet<m_sister> m_sister { get; set; }
         public DbSet<palata> palata { get; set; }
         public DbSet<role> role { get; set; }
-        public DbSet<pcount> pcount { get; set; }
-        public DbSet<retir> retir { get; set; }
-        public DbSet<retir1> retir1 { get; set; }
-        public DbSet<retir2> retir2 { get; set; }
-        public DbSet<retire> retire { get; set; }
     }
 }

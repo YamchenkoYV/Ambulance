@@ -167,6 +167,7 @@
     <Compile Include="Controllers\HistoryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MsisterController.cs" />
+    <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="doctors.cs">
       <DependentUpon>Ambulance.tt</DependentUpon>
     </Compile>
@@ -185,22 +186,7 @@
     <Compile Include="palata.cs">
       <DependentUpon>Ambulance.tt</DependentUpon>
     </Compile>
-    <Compile Include="pcount.cs">
-      <DependentUpon>Ambulance.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="retir.cs">
-      <DependentUpon>Ambulance.tt</DependentUpon>
-    </Compile>
-    <Compile Include="retir1.cs">
-      <DependentUpon>Ambulance.tt</DependentUpon>
-    </Compile>
-    <Compile Include="retir2.cs">
-      <DependentUpon>Ambulance.tt</DependentUpon>
-    </Compile>
-    <Compile Include="retire.cs">
-      <DependentUpon>Ambulance.tt</DependentUpon>
-    </Compile>
     <Compile Include="role.cs">
       <DependentUpon>Ambulance.tt</DependentUpon>
     </Compile>
@@ -320,6 +306,9 @@
     <Content Include="Views\History\Delete.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Home\AfterLogin.cshtml" />
+    <Content Include="Views\Reports\Report1.cshtml" />
+    <Content Include="Views\Reports\AfterReport1.cshtml" />
+    <Content Include="Views\Reports\ErrorReport.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
