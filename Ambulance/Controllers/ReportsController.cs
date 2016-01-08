@@ -5,13 +5,21 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace Ambulance.Controllers
-{
+{   
+    [Authorize]
     public class ReportsController : Controller
     {
+
         ambulanceEntities db = new ambulanceEntities();
         //
         // GET: /Reports/
 
+
+        public ActionResult Index()
+        {
+            return View();
+        }
+        
         public ActionResult Report1()
         {
             return View();

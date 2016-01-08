@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Ambulance.doctors>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.shifr)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.d_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OtdNumb)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_in)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_out)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Spec)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.shifr)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.d_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OtdNumb)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_in)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_out)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Spec)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

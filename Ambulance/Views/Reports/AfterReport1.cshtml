@@ -1,19 +1,17 @@
 ﻿@model System.Linq.IQueryable<IGrouping<Int32,Ambulance.ill_history>>
 
 <div id="searchresults">
+    @{
+    string[] months = new string[] { "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август",
+        "Сентябрь", "Октябрь", "Ноябрь","Декабрь"}; 
+}
     <h3>Пациенты поступившие в стационар в @Model.First().First().Date_in.Year году</h3>
-    <table style="border:1px; width:50px">
+    <table style="margin-left:20px; border-width:2px; width:20%; border-color:black">
     @foreach (var item in Model)
     { 
         <tr>
             <td>
-             @switch (item.Key.ToString())
-             {
-                 case "1": @:Январь 
-                 case "3": @:Март 
-                 case "9": @:Сентябрь 
-             default: break;
-             } 
+             @months[item.Key]
             </td>
               <td><table>
                 @foreach(var ill in @item){

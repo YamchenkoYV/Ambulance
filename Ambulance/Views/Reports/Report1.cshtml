@@ -4,6 +4,7 @@
 }
 @Scripts.Render("~/bundles/modernizr")
 <h2>Отчет о заболеваемости пациентов за период</h2>
+
 @using(Ajax.BeginForm("AfterReport1",new AjaxOptions{UpdateTargetId="result"})){
 
     @Html.Label("Введите год: ") 
@@ -12,7 +13,8 @@
     <input type="submit" />
 }
 <div id="result"></div>
-
+<br/><br />
+<small style="margin-left:50%;">@Html.ActionLink("Назад","Index","Reports")</small>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }

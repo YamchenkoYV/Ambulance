@@ -2,12 +2,16 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.Mvc;
 using System.Security.Cryptography;
 using System.Text;
+using Ambulance.Models;
+using Ambulance.Providers;
 
 namespace Ambulance.Controllers
 {
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         //
@@ -25,7 +29,94 @@ namespace Ambulance.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login(ambulance_user user)
+        public ActionResult Login(LoginModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Membership.ValidateUser(model.login, model.password))
+                {
+                    FormsAuthentication.SetAuthCookie(model.login, model.RememberMe);
+                    using(Ambulance.ambulanceEntities db = new ambulanceEntities()){
+                        ambulance_user v = db.ambulance_user.Where(b => b.login.Equals(model.login)).FirstOrDefault();
+
+                        string staffName = "";
+                        int depNumb = 0;
+                        if (v.role_id == 1)
+                        {
+                            var staff = db.doctors.Where(a => a.shifr.Equals(v.prof_id)).FirstOrDefault();
+                            staffName = staff.d_name;
+                            depNumb = (int)staff.OtdNumb;
+                        }
+                        else if (v.role_id == 2)
+                        {
+                            var staff = db.m_sister.Where(a => a.M_id.Equals(v.prof_id)).FirstOrDefault();
+                            staffName = staff.M_Name;
+                            depNumb = (int)staff.OtdNumb;
+                        }
+                
+                        Session["LogedUserName"] = staffName;
+                        Session["DepNumb"] = depNumb;
+                        Session["UserId"] = (int)v.prof_id;
+                        Session["RoleId"] = v.role_id;
+                        if(v.role_id == 1)
+                            return RedirectToAction("Index","Doctor");
+                        else if(v.role_id == 2)
+                            return RedirectToAction("Index","Msister");
+                        else
+                            return RedirectToAction("AfterLoginAdmin");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Неправильный пароль или логин");
+                }
+            }
+            return View(model);
+        }
+
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            Session.Clear();
+ 
+            return RedirectToAction("Login");
+        }
+ 
+        public ActionResult Register()
+        {
+            return View();
+        }
+ 
+        [HttpPost]
+        public ActionResult Register(RegisterModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                MembershipUser membershipUser = ((CustomMembershipProvider)Membership.Provider).CreateUser(model.login, model.password,model.role_id,model.prof_id);
+ 
+                if (membershipUser != null)
+                {
+                    FormsAuthentication.SetAuthCookie(model.login, false);
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Ошибка при регистрации");
+                }
+            }
+            return View(model);
+        }
+
+        public ActionResult AfterLoginAdmin()
+        {
+            return View();
+        }
+        public ActionResult Edit()
+        {
+            return View();
+        }
+    #region Old_Version
+      /*  public ActionResult Login(ambulance_user user)
         {
             if (ModelState.IsValid)
             {
@@ -123,5 +214,7 @@ namespace Ambulance.Controllers
                 return false;
             }
     }
+        */
+#endregion
         }
 }

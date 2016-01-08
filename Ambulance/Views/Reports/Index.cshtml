@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Меню запросов</h2>
+
+
+    <ul>
+        <li>@Html.ActionLink("Отчет по заболеваемости за период","Report1","Reports")</li>
+        <li>@Html.ActionLink("Отчет о пациентах для лечащих врачей","Report2","Reports")</li>
+        <li>@Html.ActionLink("Отчет по заболеваемости за период","Report3","Reports")</li>
+        <li>@Html.ActionLink("Отчет по заболеваемости за период","Report4","Reports")</li>
+        <li>@Html.ActionLink("Отчет по заболеваемости за период","Report5","Reports")</li>
+    </ul>
+
+@if(Session["RoleId"].Equals(1)){
+    <small>@Html.ActionLink("Назад","AfterLoginDoc","Home")</small>
+}
+else{
+    <small>@Html.ActionLink("Назад","AfterLoginAdmin","Home")</small>
+}

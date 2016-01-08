@@ -1,57 +1,16 @@
-﻿@model IEnumerable<Ambulance.m_sister>
-
-@{
-    ViewBag.Title = "Index";
+﻿@{
+    ViewBag.Title = "AfterLoginMsister";
 }
 
-<h2>Index</h2>
+ <small><i>Welcome @Session["LogedUserName"].ToString()</i></small><br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.M_id)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.M_Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.OtdNumb)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date_in)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date_out)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.M_id)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.M_Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.OtdNumb)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date_in)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date_out)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new {  id=item.M_id  }) |
-            @Html.ActionLink("Details", "Details", new {  id=item.M_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.M_id })
-        </td>
-    </tr>
-}
+<h2>Меню запросов</h2>
 
-</table>
+
+    <ul>
+        <li>@Html.ActionLink("Разгрузка палат","PalUnload","Msister")</li>
+    </ul>
+
+<br/><br/>
+<div align="center"><small>@Html.ActionLink("Выход","LogOff","Home")</small></div>

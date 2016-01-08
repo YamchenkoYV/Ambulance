@@ -9,7 +9,7 @@ namespace Ambulance.Models
     public class UserContext : DbContext
     {
         public DbSet<User> Users { get; set; }
-        public DbSet<Role> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
     }
 
     public class User

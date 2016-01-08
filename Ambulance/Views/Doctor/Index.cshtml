@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "AfterLogin";
+}
+
+ <small><i>Welcome @Session["LogedUserName"].ToString()</i></small><br />
+
+
+<h2>Меню запросов</h2>
+
+
+    <ul>
+        <li>@Html.ActionLink("Меню запросов","Index","Reports")</li>
+        <li>@Html.ActionLink("Осмотр пациента","Osmotr","Doctor")</li>
+        <li>@Html.ActionLink("Сформировать список на выписку","ListForLeave","Doctor")</li>
+    </ul>
+
+<br/><br/>
+<div align="center"><small>@Html.ActionLink("Выход","LogOff","Home")</small></div>

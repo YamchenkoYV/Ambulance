@@ -1,0 +1,29 @@
+﻿@model Ambulance.historystr
+@{
+    ViewBag.Title = "Osmotr";
+}
+
+@Html.ValidationSummary(true)
+
+<h2>Осмотр пациента</h2>
+@*using(Html.BeginForm("AfterOsmotr","Doctor",new AjaxOptions{UpdateTargetId="success"})){*@
+@using(Ajax.BeginForm("AfterOsmotr", "Doctor", new AjaxOptions {UpdateTargetId="success"}))
+{
+    <table>
+        <tr>
+            <td></td>
+            <td><input type="date" name="Date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
+            </td>      
+            <td>@Html.DropDownListFor(a => a.ill_id, ViewBag.Slist as SelectList)</td>
+            <td><input type="submit" value="Добавить запись" /></td>
+        </tr>
+    </table>
+     
+}
+<div id="success"></div>
+<br/><br />
+<small style="margin-left:50%;">@Html.ActionLink("Назад","Index","Doctor")</small>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+}
