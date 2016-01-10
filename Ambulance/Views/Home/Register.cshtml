@@ -1,0 +1,66 @@
+﻿@model Ambulance.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+
+<h2>Регистрация нового пользователя</h2>
+
+<div id="success"></div>
+
+@using (Ajax.BeginForm("Register", "Home", new AjaxOptions { UpdateTargetId="success"}))
+{
+@Html.AntiForgeryToken()
+@Html.ValidationSummary(true)
+    if (ViewBag.Message != null)
+    {
+    <div style="border: 1px solid red">
+        @ViewBag.Message
+    </div>
+    }
+
+<table align="center">
+    <tr>
+        <td>@Html.LabelFor(a => a.login)</td>
+        <td>@Html.TextBoxFor(a => a.login)</td>
+        <td>@Html.ValidationMessageFor(a => a.login)</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(a => a.password)</td>
+        <td>@Html.PasswordFor(a => a.password)</td>
+        <td>@Html.ValidationMessageFor(a => a.password)</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(a => a.ConfirmPassword)</td>
+        <td>@Html.PasswordFor(a => a.ConfirmPassword)</td>
+        <td>@Html.ValidationMessageFor(a => a.ConfirmPassword)</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(a => a.role_id)</td>
+        <td>@Html.DropDownListFor(a => a.role_id, ViewBag.role_id as SelectList)</td>
+        <td>@Html.ValidationMessageFor(a => a.role_id)</td>
+    </tr>
+    <tr>
+        <td>@Html.LabelFor(a => a.prof_id)</td>
+        <td>@Html.DropDownListFor(a => a.prof_id, ViewBag.prof_id as SelectList)</td>
+        <td>@Html.ValidationMessageFor(a => a.prof_id)</td>
+    </tr>
+    <tr>
+@*        <td>    
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </td>*@
+        <td><br /><br /><small>@Html.ActionLink("Назад","AfterLoginAdmin","Home")</small></td>
+        <td>
+            <br /><br />
+            <input type="submit" value="Зарегистрировать" />
+        </td>
+    </tr>
+</table>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+}

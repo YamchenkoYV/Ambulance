@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "ListForLeave";
+}
+
+<h2>Выбирите пункт меню</h2>
+
+<ul>
+    <li>@Html.ActionLink("Сформировать список на выписку","CreateSp","Doctor")</li>
+    <li>@Html.ActionLink("Отменить выписку пациента","CancelOfLeaving","Doctor")</li>
+</ul>
+<br /><br />
+<div class="center"><small>@Html.ActionLink("Назад","Index","Doctor")</small></div>

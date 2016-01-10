@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "Report4";
+}
+
+<h2>Отчет о продолжительности лечения за период</h2>
+
+@using(Ajax.BeginForm("AfterReport4",new AjaxOptions{UpdateTargetId="result"})){
+
+    @Html.Label("Введите год: ") 
+    @Html.TextBox("date","",Html.Value("Получить отчет"))
+
+    <input type="submit" />
+}
+<div id="result"></div>
+<br/><br />
+<small style="margin-left:50%;">@Html.ActionLink("Назад","Index","Reports")</small>

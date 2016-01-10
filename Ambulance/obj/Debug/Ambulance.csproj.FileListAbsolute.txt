@@ -31,3 +31,4 @@ C:\Users\Юрий\Documents\Visual Studio 2012\Projects\MVC\Ambulance\Ambulance\
 C:\Users\Юрий\Documents\Visual Studio 2012\Projects\MVC\Ambulance\Ambulance\Ambulance\bin\Microsoft.AspNet.Identity.Core.dll
 C:\Users\Юрий\Documents\Visual Studio 2012\Projects\MVC\Ambulance\Ambulance\Ambulance\bin\System.Web.Helpers.dll
 C:\Users\Юрий\Documents\Visual Studio 2012\Projects\MVC\Ambulance\Ambulance\Ambulance\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Юрий\Documents\Visual Studio 2012\Projects\MVC\Ambulance\Ambulance\Ambulance\bin\Microsoft.Web.Mvc.dll

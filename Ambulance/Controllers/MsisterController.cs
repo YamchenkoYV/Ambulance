@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace Ambulance.Controllers
 {
+    [Authorize(Roles="admin,msister")]
     public class MsisterController : Controller
     {
         //

@@ -1,0 +1,30 @@
+﻿@model Ambulance.ill_history
+
+@{
+    ViewBag.Title = "Info";
+}
+
+<h2>Информация о пациенте: @Model.PName</h2>
+<table style="width:70%">
+    <tr>
+        <th>Имя пациента</th><th>Адрес</th><th>Номер паспорта</th><th>Дата поступления</th>
+        <th>Диагноз при поступлении</th>
+        @if (Model.Diagn_out != null)
+        { 
+           <th>Дата выписки</th>
+            <th>Диагноз при выписке</th> 
+        }
+        <th>Номер палаты</th>
+    </tr>
+    <tr>
+        <td>@Model.PName</td><td>@Model.PAdress</td><td>@Model.NPasport</td><td>@Model.Date_in.ToString("dd-MM-yyyy")</td>
+        <td>@Model.Diagn_in</td>
+        @if (Model.Diagn_out != null)
+        { 
+           <td>@Model.Date_out.ToString("dd-MM-yyyy")</td>
+            <td>@Model.Diagn_out</td> 
+        }
+        <td>@Model.Pal_id</td>
+    </tr>
+    <tr><td style='column-span:all;text-align:center;'><br/><br/><small>@Html.ActionLink("К отчету","Report2","Reports")</small></td></tr>
+</table>

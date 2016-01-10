@@ -8,8 +8,10 @@ using System.Web.Mvc;
 
 namespace Ambulance.Controllers
 {
+    [Authorize(Roles="admin")]
     public class DoctorsEditController : Controller
     {
+        
         private ambulanceEntities db = new ambulanceEntities();
 
         //

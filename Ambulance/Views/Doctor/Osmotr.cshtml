@@ -7,15 +7,21 @@
 
 <h2>Осмотр пациента</h2>
 @*using(Html.BeginForm("AfterOsmotr","Doctor",new AjaxOptions{UpdateTargetId="success"})){*@
-@using(Ajax.BeginForm("AfterOsmotr", "Doctor", new AjaxOptions {UpdateTargetId="success"}))
+@using(Ajax.BeginForm("AfterOsmotr", "Doctor", new AjaxOptions {UpdateTargetId="success",
+    InsertionMode = InsertionMode.Replace}))
 {
-    <table>
+    <table style="margin-left:40%">
         <tr>
-            <td></td>
+            <td>Введите дату осмотра</td>
             <td><input type="date" name="Date" value="@DateTime.Now.ToString("yyyy-MM-dd")" />
-            </td>      
-            <td>@Html.DropDownListFor(a => a.ill_id, ViewBag.Slist as SelectList)</td>
+            </td>    
+            
+            <td>@Html.DropDownListFor(a => a.ill_id, ViewBag.Slist as SelectList)</td>           
             <td><input type="submit" value="Добавить запись" /></td>
+            <td>
+                @Html.ValidationMessageFor(m => m.Date) 
+                @Html.ValidationMessageFor(m => m.ill_id)
+            </td>
         </tr>
     </table>
      
@@ -25,5 +31,6 @@
 <small style="margin-left:50%;">@Html.ActionLink("Назад","Index","Doctor")</small>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
 }

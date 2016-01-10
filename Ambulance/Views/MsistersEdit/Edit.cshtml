@@ -4,13 +4,13 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>Редактирование записи медсестры</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>m_sister</legend>
+        <legend>Мед.сестра</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.M_id)

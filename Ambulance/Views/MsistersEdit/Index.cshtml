@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Редактироваие записей о мед.сестрах</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink( "Добавить персонал","Create")
 </p>
 <table>
     <tr>
@@ -54,4 +54,5 @@
     </tr>
 }
 
+    <tr><td style="column-span:all"><small>@Html.ActionLink("Назад","Edit","Home")</small></td></tr>
 </table>

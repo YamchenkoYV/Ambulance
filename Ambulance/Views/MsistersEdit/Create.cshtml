@@ -4,13 +4,13 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2>Добавить запись о мед.сестре</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>m_sister</legend>
+        <legend>мед.сестра</legend>
 
         <div class="editor-label">
             @Html.LabelFor(model => model.M_id)
@@ -59,7 +59,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("К списку", "Index")
 </div>
 
 @section Scripts {

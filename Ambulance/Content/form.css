@@ -13,14 +13,20 @@ p {
 	line-height: 1.5em;
 }
 
-button.startButton {
+.startButton {
+    
+    width:200px;
+    height:60px;
+    margin-left:45%;
+    margin-top:300px;
+    padding:inherit;
 	text-decoration: none;
     vertical-align:middle;
     text-align:center; 
-    width:30%; 
     background-color:#a5e5d5;
-    color:#05f; 
-    border-style:dotted
+    border-color:#090; 
+    border-width:5px;
+    border-style:solid
 }
 
 h1 {
@@ -80,13 +86,21 @@ li {
 
 table {
     text-align:center;
+    border-width:3px;
+    border-color:black;
+    width:auto;
     margin-top:2%;
     vertical-align: middle;
 	background-color: #ffc;
+   
 }
 td{
+    width:200px;
  text-align:center;
  vertical-align:middle;
+}
+th {
+    background-color:#ccc;
 }
 small {
  text-decoration: underline; 
@@ -94,4 +108,7 @@ small {
  background-color:#ffa; 
  color:#00F; border-style:groove;
  border-width:1px; padding:5px;
+}
+.center {
+    margin-left:40%;
 }

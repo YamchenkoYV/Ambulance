@@ -2,4 +2,25 @@
     ViewBag.Title = "Вход";
 }
 
-<button type="button" class="startButton">@Html.ActionLink( "Вход в систему","Login","Home")</button>
+<button type="button" class="startButton"  onclick="location.href='/Home/Login'"> Вход в систему</button>
+
+
+@section scripts{
+<script type="text/javascript">
+    $(function () {
+        $(".startButton").mouseover(function () {
+            $(this).animate({ height: '+=20', width: '+=20' });
+        });
+        $(".startButton").mouseout(function () {
+            $(this).animate({ height: '-=20', width: '-=20' });
+        });
+        $(".startButton").mousedown(function () {
+            $(this).css('border-color', '#0b490b');
+        })
+        $(".startButton").mouseup(function() {
+            $(this).css('border-color','#090');
+        }
+            )
+    });
+</script>
+}

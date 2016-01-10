@@ -12,10 +12,10 @@
         <li>@Html.ActionLink("Отчет по заболеваемости за период","Report4","Reports")</li>
         <li>@Html.ActionLink("Отчет по заболеваемости за период","Report5","Reports")</li>
     </ul>
-
+<br /><br />
 @if(Session["RoleId"].Equals(1)){
-    <small>@Html.ActionLink("Назад","AfterLoginDoc","Home")</small>
+    <div align="center"><small>@Html.ActionLink("Назад","AfterLoginDoc","Home")</small></div>
 }
 else{
-    <small>@Html.ActionLink("Назад","AfterLoginAdmin","Home")</small>
+    <div align="center"><small>@Html.ActionLink("Назад","AfterLoginAdmin","Home")</small></div>
 }

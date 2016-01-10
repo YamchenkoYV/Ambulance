@@ -4,7 +4,7 @@
     ViewBag.Title = "Login";
 }
 
-<h2>Login</h2>
+<h2>Авторизация</h2>
 @using (Html.BeginForm("Login","Home", FormMethod.Post))
 {
 @Html.AntiForgeryToken()
@@ -28,11 +28,13 @@ if (ViewBag.Message !=  null)
         <td>@Html.ValidationMessageFor(a=>a.password)</td>
     </tr>
     <tr>
-        <td>    
+@*        <td>    
                 @Html.CheckBoxFor(m => m.RememberMe)
                 @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
-            </td>
+            </td>*@
+        <td></td>
         <td>
+            <br/>
             <input type="submit" value="Login" />
         </td>
     </tr>

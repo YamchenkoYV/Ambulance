@@ -11,12 +11,11 @@ using Ambulance.Providers;
 
 namespace Ambulance.Controllers
 {
-    [AllowAnonymous]
     public class HomeController : Controller
     {
         //
         // GET: /Home/
-
+        
         public ActionResult Index()
         {
             return View();
@@ -27,6 +26,7 @@ namespace Ambulance.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(LoginModel model)
@@ -74,6 +74,7 @@ namespace Ambulance.Controllers
             return View(model);
         }
 
+        [AllowAnonymous]
         public ActionResult LogOff()
         {
             FormsAuthentication.SignOut();
@@ -84,33 +85,54 @@ namespace Ambulance.Controllers
  
         public ActionResult Register()
         {
+            List<long> model_role = new List<long>();
+            List<long> model_prof = new List<long>();
+            using (ambulanceEntities db = new ambulanceEntities())
+            {
+               model_role = (from p in db.role where p.role_id != 3 select p.role_id).ToList();
+               if(model_role.First() == 1)
+                   model_prof = (from p in db.doctors select p.shifr).ToList(); 
+               else if(model_role.First() == 2)
+                   model_prof = (from p in db.m_sister select p.M_id).ToList();
+            }
+
+            SelectList list_roles = new SelectList(model_role,model_role.First());
+            SelectList list_profs = new SelectList(model_prof, model_prof.First());
+            ViewBag.role_id = list_roles;
+            ViewBag.prof_id = list_profs;
             return View();
+            
         }
- 
+
+        [Authorize(Roles = "admin")]
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {
             if (ModelState.IsValid)
             {
+                
                 MembershipUser membershipUser = ((CustomMembershipProvider)Membership.Provider).CreateUser(model.login, model.password,model.role_id,model.prof_id);
  
                 if (membershipUser != null)
                 {
-                    FormsAuthentication.SetAuthCookie(model.login, false);
-                    return RedirectToAction("Index", "Home");
+                    //FormsAuthentication.SetAuthCookie(model.login, false);
+                    return PartialView("Success","Home");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Ошибка при регистрации");
+                    ModelState.AddModelError("", "Пользователь с таким логином уже существует");
                 }
             }
-            return View(model);
+            return  View();
         }
 
+        [Authorize(Roles = "admin")]
         public ActionResult AfterLoginAdmin()
         {
             return View();
         }
+
+        [Authorize(Roles = "admin")]
         public ActionResult Edit()
         {
             return View();

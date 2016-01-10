@@ -8,6 +8,7 @@ using System.Web.Mvc;
 
 namespace Ambulance.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class HistoryController : Controller
     {
         private ambulanceEntities db = new ambulanceEntities();

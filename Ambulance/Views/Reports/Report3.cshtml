@@ -1,0 +1,22 @@
+﻿@model List<Ambulance.Models.Rep2>
+
+@{
+    ViewBag.Title = "Rep2";
+}
+
+<h2>Отчет о пациентах, у которых сохранился диагноз</h2>
+<table>
+    <tr>
+        <th>Лечащий врач</th>
+        <th>Имя пациента</th>
+        <th>Информация о пациенте</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr style="background-color:#bbb8b8"><td>@item.name</td><td></td><td></td></tr>
+        foreach(var pat in item.profile){
+            <tr> <td></td><td>@pat.PName</td><td>@Html.ActionLink("Инфо", "Info", new {str="Привет", id = pat.ill_id })</td></tr>
+        }
+    }
+    <tr><td style="column-span:all; text-align:center"><br /><br /><small>@Html.ActionLink("В меню запросов","Index","Reports")</small></td></tr>
+</table>

@@ -6,14 +6,20 @@
         "Сентябрь", "Октябрь", "Ноябрь","Декабрь"}; 
 }
     <h3>Пациенты поступившие в стационар в @Model.First().First().Date_in.Year году</h3>
-    <table style="margin-left:20px; border-width:2px; width:20%; border-color:black">
+    <table >
+        <thead>
+            <tr>
+                <th>Месяц</th>
+                <th>Пациенты </th>
+            </tr>
+        </thead>
     @foreach (var item in Model)
     { 
-        <tr>
+        <tr style="background-color:#ede9e9">
             <td>
              @months[item.Key]
             </td>
-              <td><table>
+              <td><table style="background-color:#ede9e9">
                 @foreach(var ill in @item){
                       <tr><td>@ill.PName</td></tr>
                       }
