@@ -5,46 +5,60 @@
 }
 
 <h2>Пациенты на выписку из отделения №@Session["DepNumb"].ToString() </h2>
-
-@using(Html.BeginForm("CreateSp","Doctor",FormMethod.Post)){
+<div id="success"></div>
+@using (Ajax.BeginForm("CreateSp", "Doctor", new AjaxOptions {UpdateTargetId = "success" }))
+{
 <table style="margin-left:40%">
+    
     <tr><th>Фамилия пациента</th><th>Диагноз</th></tr>
-    @foreach( var item in Model){
+    @foreach (var item in Model)
+    {
         <tr>
-            @if(item.Diagn.Equals(string.Empty)){
-                <td style="text-align:left">@Html.CheckBox("Id",false,@Html.Value(item.Id.ToString()))@Html.Label(item.Id.ToString(),item.Name)</td>
-                 <td>@Html.MyTextbox("Str",item.Id.ToString(),item.Diagn,"unchecked") @*@Html.TextBox("Str",item.Diagn,Html.Id(item.Id.ToString()))*@</td>
-            }else{
-                 <td style="text-align:left">@Html.CheckBox("Id",true,@Html.Value(item.Id.ToString()))@item.Name</td>  
-                <td>@Html.MyTextbox("Str",item.Id.ToString(),item.Diagn,"checked")</td>
+            @if (item.Diagn.Equals(string.Empty))
+            {
+                <td style="text-align:left">@Html.CheckBox("Id", false, new { id = item.Id.ToString() })@Html.Label(item.Id.ToString(), item.Name, new { @for = item.Id.ToString() })</td>
+                 <td>@Html.MyTextbox("Str", item.Id.ToString(), item.Diagn, "unchecked") @*@Html.TextBox("Str",item.Diagn,Html.Id(item.Id.ToString()))*@</td>
+            }
+            else
+            {
+                 <td style="text-align:left">@Html.CheckBox("Id", true, new { id = item.Id.ToString() })@item.Name</td>  
+                <td>@Html.MyTextbox("Str", item.Id.ToString(), item.Diagn, "checked")</td>
             }
        
         </tr>
     }
-        <tr><td><br/><br/><small><@Html.ActionLink("Назад","Index","Doctor")</small></td>
+        <tr><td><br/><br/><small><@Html.ActionLink("Назад", "Index", "Doctor")</small></td>
             <td><br/><br/><input type="submit" value="Подтвердить"/></td>
-         </tr>
-    
+         </tr>    
 </table>
 }
 
 @section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+
 
     <script>
         $(".checked").attr("disabled", false);
         $(".unchecked").attr("disabled", true);
-
-        $("input[type='checkbox']").change(function () {
-            console.log("Checked Action");
+       
+        $('input').change(function () {
             var v = $(this).attr("id");
+            var box = $(this);
+            //alert("Status=" + status);
             $("input[type='text']").each(function () {
                 var b = $(this).attr("id");
-                if (v == b)
-                    $(this).attr("class", "unchecked")
+                
+                if (v == b) {
+                    if(!box.prop('checked'))
+                    //alert("b=" + b);
+                        $(this).attr('class', 'unchecked');                  
+                    //var cl = $(this).attr('class');
+                    //alert("cl=" + cl);
+                    else
+                        $(this).attr('class', 'checked');
+                }
             });
+            $(".checked").attr("disabled", false);
+            $(".unchecked").attr("disabled", true);
         });
     </script>
 }

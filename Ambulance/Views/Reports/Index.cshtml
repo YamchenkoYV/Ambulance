@@ -14,7 +14,7 @@
     </ul>
 <br /><br />
 @if(Session["RoleId"].Equals(1)){
-    <div align="center"><small>@Html.ActionLink("Назад","AfterLoginDoc","Home")</small></div>
+    <div align="center"><small>@Html.ActionLink("Назад","Index","Doctor")</small></div>
 }
 else{
     <div align="center"><small>@Html.ActionLink("Назад","AfterLoginAdmin","Home")</small></div>

@@ -59,10 +59,10 @@ namespace Ambulance.Controllers
         {
             //Здесь должно быть добавлениие записи в бд history_str
             str.dshifr = (int)Session["UserId"];
-            System.Diagnostics.Debug.WriteLine("AfterOsmotr");
+ //           System.Diagnostics.Debug.WriteLine("AfterOsmotr");
             if (ModelState.IsValid)
             {
-                System.Diagnostics.Debug.WriteLine("Date " + str.Date + "ID " + str.ill_id);
+   //             System.Diagnostics.Debug.WriteLine("Date " + str.Date + "ID " + str.ill_id);
 
                 using (ambulanceEntities db = new ambulanceEntities())
                 {
@@ -71,9 +71,9 @@ namespace Ambulance.Controllers
                 }
 
             }
-            return PartialView();
-            
+            return PartialView();         
         }
+
         public ActionResult ListForLeave() 
         {
            return View();
@@ -97,6 +97,13 @@ namespace Ambulance.Controllers
             return View(model);
         }
 
+        [HttpPost]
+        public ActionResult CreateSp(List<ForOsmotr> list)
+        {
+            foreach (var item in list)
+                System.Diagnostics.Debug.WriteLine("Item: " + item.Id + " " + item.Str);
+            return PartialView();
+        }
         public ActionResult CancelOfLeaving()
         {
             return View();
